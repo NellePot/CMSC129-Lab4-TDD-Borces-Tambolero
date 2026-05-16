@@ -1,8 +1,9 @@
 def validate_task(title):
-    raise NotImplementedError
+    return len(title.strip()) > 0
 
 def create_task(title):
-    raise NotImplementedError
+    return {"title": title, "status": "pending"}
 
 def update_task_status(task, new_status):
-    raise NotImplementedError
+    task["status"] = new_status
+    return task
