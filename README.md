@@ -115,3 +115,18 @@ Planned tests:
 - A user can add a task using the task form.
 - A user can view the added task in the task list.
 - A user can update or delete a task from the page.
+
+## Test Results
+
+### Unit Testing with TDD 
+
+**Local terminal output:**
+<img width="1920" height="1020" alt="Screenshot 2026-05-17 025313" src="https://github.com/user-attachments/assets/7db5719f-ff3e-44c4-8bc6-79cc8b33454e" />
+<img width="1920" height="371" alt="Screenshot 2026-05-17 025400" src="https://github.com/user-attachments/assets/1e5bbbf7-092b-4f55-8e46-68628bc9276f" />
+<img width="1402" height="262" alt="Screenshot 2026-05-17 030105" src="https://github.com/user-attachments/assets/68faaf18-ff03-4a41-9d7d-d0d92c56cd94" />
+
+**GitHub Actions:**
+<img width="1920" height="912" alt="Screenshot 2026-05-17 030431" src="https://github.com/user-attachments/assets/d2045508-d4c6-46ce-b515-8260367e97ac" />
+
+
+
