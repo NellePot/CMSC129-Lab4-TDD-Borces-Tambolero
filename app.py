@@ -5,6 +5,12 @@ app = Flask(__name__)
 
 tasks = []
 
+def save_task(title):
+    task = create_task(title)
+    tasks.append(task)
+    return task
+
+
 @app.route("/")
 def home():
     return "Task Manager running"
@@ -19,9 +25,8 @@ def add_task():
     title = data.get("title", "")
 
     try:
-        task = create_task(title)
+        task = save_task(title)
     except ValueError as error:
         return jsonify({"error": str(error)}), 400
     
-    tasks.append(task)
     return jsonify(task), 201
