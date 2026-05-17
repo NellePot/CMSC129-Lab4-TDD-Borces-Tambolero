@@ -128,5 +128,19 @@ Planned tests:
 **GitHub Actions:**
 <img width="1920" height="912" alt="Screenshot 2026-05-17 030431" src="https://github.com/user-attachments/assets/d2045508-d4c6-46ce-b515-8260367e97ac" />
 
+### Integration Testing with TDD
+
+**Local terminal output:**
+<img width="1918" height="1078" alt="Screenshot 2026-05-17 070907" src="https://github.com/user-attachments/assets/0bc4e5a5-98f0-444e-828c-a546d0cd0261" />
+<img width="1918" height="1078" alt="Screenshot 2026-05-17 070919" src="https://github.com/user-attachments/assets/eb8e241f-13d3-467d-a34d-325c44885f1a" />
+<img width="1918" height="1078" alt="Screenshot 2026-05-17 071250" src="https://github.com/user-attachments/assets/3e7aa48f-13cd-47b8-9217-8307cc3932e6" />
+
+**GitHub Actions:**
+<img width="1292" height="350" alt="image" src="https://github.com/user-attachments/assets/1badebef-a930-4d73-98f7-d7b6ee8907f6" />
+
+
+
+
+
 
 
