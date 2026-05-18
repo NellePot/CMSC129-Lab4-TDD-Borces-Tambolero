@@ -118,6 +118,29 @@ Planned tests:
 - A user can view the added task in the task list.
 - A user can update or delete a task from the page.
 
+## CI/CD Setup
+
+*Tool used:* GitHub Actions
+
+*What triggers the workflow:*
+The workflow is triggered automatically on every push to the main branch.
+
+*Pipeline overview:*
+- Checks out the repository
+- Sets up Python 3.11
+- Installs dependencies (Flask, pytest, playwright, pytest-playwright)
+- Installs Playwright browsers
+- Starts the Flask app in the background
+- Runs all tests (unit, integration, and system)
+
+*Red phase (failing pipeline):*
+<img width="1920" height="908" alt="Screenshot 2026-05-17 025031" src="https://github.com/user-attachments/assets/05cfa99e-7ad8-4e3a-b680-a1e3389acfe1" />
+
+
+*Green phase (passing pipeline):*
+<img width="1920" height="915" alt="Screenshot 2026-05-17 025622" src="https://github.com/user-attachments/assets/b6205ccc-ada5-46d7-b552-0a841584bc9f" />
+
+
 ## Test Results
 
 ### Unit Testing with TDD 
