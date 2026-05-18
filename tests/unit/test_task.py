@@ -1,5 +1,5 @@
 import pytest
-from task import validate_task, create_task, update_task_status
+from src.task import validate_task, create_task, update_task_status
 
 # User Story 1: As a student, I want to add a task
 def test_reject_empty_title():

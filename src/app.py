@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, render_template
-from task import create_task
+from src.task import create_task
+import src.task as task_module
 
 app = Flask(__name__)
 
@@ -41,17 +42,20 @@ def add_task():
 
     return jsonify(task), 201
 
+def find_task(task_id):
+    return next((t for t in tasks if t["id"] == task_id), None)
+
 @app.route("/tasks/<int:task_id>", methods=["PATCH"])
 def update_task(task_id):
+    task = find_task(task_id)
+    if not task:
+        return jsonify({"error": "not found"}), 404
     data = request.get_json(silent=True) or {}
-    for task in tasks:
-        if task["id"] == task_id:
-            allowed = {"title", "deadline", "duetime", "status", "priority"}
-            for k, v in data.items():
-                if k in allowed:
-                    task[k] = v
-            return jsonify(task), 200
-    return jsonify({"error": "not found"}), 404
+    allowed = {"title", "deadline", "duetime", "status", "priority"}
+    for k, v in data.items():
+        if k in allowed:
+            task[k] = v
+    return jsonify(task), 200
 
 @app.route("/tasks/<int:task_id>", methods=["DELETE"])
 def delete_task(task_id):
@@ -63,6 +67,7 @@ def delete_task(task_id):
 def reset_tasks():
     global tasks
     tasks = []
+    task_module._counter = 0
     return jsonify({"message": "reset"}), 200
 
 if __name__ == "__main__":

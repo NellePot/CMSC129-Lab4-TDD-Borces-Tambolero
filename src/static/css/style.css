@@ -1,0 +1,588 @@
+/* =========================
+   Fonts & Global Reset
+========================= */
+@font-face {
+  font-family: 'Sublima';
+  src: url(fonts/Sublima-ExtraBold.otf);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: white;
+  font-family: "Sublima", sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  background: #222531;
+  background-repeat: no-repeat;
+  display: flex; 
+  overflow: hidden; /* Prevents double scrollbars */
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+p { text-wrap: pretty; }
+h1, h2, h3, h4, h5, h6 { text-wrap: balance; }
+
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#root, #__next {
+  isolation: isolate;
+}
+
+.error { font-size: 15px; }
+
+/* =========================
+   Header & Navigation
+========================= */
+.sidebar {
+  height: 100vh;
+  width: 220px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* Prevents sidebar from shrinking */
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 4px 0 12px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+
+.sidebar h1 {
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.sidebar h2 {
+  margin-top: -40px;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.sidebar .add-task {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: #beefe8;
+  color: #444;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+}
+
+.sidebar .add-task:hover {
+  background: #e6fffb;
+  transform: translateY(-2px);
+}
+
+.sort-section {
+  padding: 15px;
+  background: #beefe8;  /* light background */
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.sort-section h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.sort-option {
+  display: block;
+  margin: px 0;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+}
+
+.sort-option input[type="radio"] {
+  accent-color: #272f38; /* modern browsers: blue color */
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1.25rem;
+}
+
+.navBar {
+  display: flex;
+  gap: 5px;
+}
+
+.navigation {
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: transparent;
+  transition: background 0.25s ease-in-out;
+  font-size: 1.5em;
+  color: white;
+}
+
+.navigation:hover,
+#tasks.navigation {
+  background: #785da180 !important;
+}
+
+#title {
+  font-size: 2.75rem;
+}
+
+#authors {
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+/* =========================
+   Task Categories & Status
+========================= */
+.main-content {
+  flex: 1; /* Takes all remaining width */
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px; /* Add padding to push content away from edges */
+  height: 100vh;
+  overflow-y: hidden; /* Let the categories scroll, not the whole page */
+}
+
+.welcome-header {
+  margin-bottom: 20px;
+  display: block; 
+}
+
+.welcome-header h2 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.categories {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+  min-height: 0;
+  width: 100%;
+  padding-top: 80px;
+}
+
+.status {
+  flex-direction: column;
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  padding: 1.25rem;
+  border-radius: 20px;
+  background: #6d7185;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.status .title {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  color: black;
+  background: #99e1d7;
+  border-style: solid;
+  border-color:  #75b4ac;;
+}
+
+.list-container {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding-right: 5px;
+  max-height: 600px;
+}
+
+.list-container::-webkit-scrollbar { width: 6px; }
+.list-container::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* =========================
+   Task Cards
+========================= */
+.task-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 0.9375rem;
+  padding: 0.9375rem;
+  border-radius: 12px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.6);
+  color: #333;
+  transition: background 0.3s;
+}
+
+.task-card.priority-important {
+  border-left: 6px solid #e74c3c; /* Red = Important */
+}
+
+.task-card.priority-mid {
+  border-left: 6px solid #f1c40f; /* Yellow = Mid */
+}
+
+.task-card.priority-easy {
+  border-left: 6px solid #2ecc71; /* Green = Easy */
+}
+
+.task-deadline {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #fff;
+  background: #4cafef;
+  border-radius: 6px;
+}
+
+.task-card.add-task {
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px dashed #999;
+}
+
+.task-card.add-task:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #666;
+}
+
+.completed {
+  text-decoration: line-through;
+  color: gray;
+  opacity: 0.7;
+}
+
+.overdue {
+  color: red;
+  font-weight: bold;
+}
+
+.near-deadline {
+  color: #CC5500; 
+  font-weight: bold;
+}
+
+/* =========================
+   Task Options & Menus
+========================= */
+.task-options { 
+  display: inline-block; 
+}
+
+.options-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.options-btn:hover {
+  background: rgba(139, 93, 126, 0.24);
+  border-radius: 10px;
+}
+
+.options-menu,
+.status-menu {
+  display: none;
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  list-style: none;
+  padding: 5px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 1000;
+  min-width: 120px;
+}
+
+.options-menu li,
+.status-menu li {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.options-menu li:hover,
+.status-menu li:hover {
+  background: #f0f0f0;
+}
+
+.options-menu.show {
+  display: block;
+}
+
+.move-task:hover .status-menu { 
+  display: block; 
+}
+
+/* =========================
+   Modal / Popup
+========================= */
+.form {
+  display: none; /* hidden until active */
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(3px);
+  background: rgba(0,0,0,0.4);
+}
+
+.pop-up {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  padding: 1.25rem 1.875rem;
+  border-radius: 12px;
+  text-align: center;
+  background: #fff;
+  color: black;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.pop-up h2 {
+  margin-bottom: 15px;
+  text-align: center;
+  color: rgb(15, 15, 15);
+}
+
+.pop-up label {
+  display: block;
+  margin: 10px 0 5px;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: left;
+}
+
+.pop-up input,
+.pop-up select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.pop-up button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  background: #66cdbe;
+  transition: background 0.25s ease-in-out;
+}
+
+.pop-up button:hover {
+  background: #50a89b;
+}
+
+/* Close Button */
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.close:hover {
+  background: rgba(125, 62, 97, 0.15);
+}
+
+/* Sidebar container */
+.sidebar {
+  position: relative; /* Make it a positioning parent */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 220px;
+  padding: 20px;
+  background-color: #2c2f3a;
+}
+
+/* Logout button positioned at bottom */
+.logout-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  text-align: center;
+  background-color: #50a89b;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.logout-btn:hover {
+  background-color: #426b65;
+}
+
+
+/* =========================
+   Toast 
+========================= */
+.toast{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 6px; 
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease; 
+  z-index: 9999; 
+}
+
+.toast.hidden{
+  display: none;
+}
+
+.toast button {
+  background: transparent;
+  border: none;
+  color: #4da3ff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+dragging {
+    opacity: 0.5;
+    border: 2px dashed #fff;
+    transform: scale(0.95);
+}
+
+/* Optional: Highlight the column you are hovering over */
+.status.drag-over {
+    background: #5d6175; /* Slightly lighter than normal */
+    transition: background 0.2s;
+}
+@keyframes fadeIn{
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}  
+}
+
+/* =========================
+   Confirmation
+========================= */
+/* Dark Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* The Box */
+.delete-modal-content {
+    background: #2c2c2c; /* Dark grey */
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Buttons */
+.btn-cancel {
+    background: #555;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete {
+    background: #ff4d4d; /* Red for danger */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-delete:hover { background: #cc0000; }

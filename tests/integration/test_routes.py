@@ -1,5 +1,5 @@
 import pytest
-from app import app, tasks
+from src.app import app, tasks
 
 
 @pytest.fixture(autouse=True)

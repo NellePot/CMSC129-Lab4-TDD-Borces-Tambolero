@@ -16,7 +16,6 @@ def test_add_task(page):
     page.wait_for_timeout(500)
     expect(page.get_by_text("Submit assignment")).to_be_visible()
 
-
 # User Story 2: As a student, I want to view my task list,
 # so that I can see what I need to accomplish.
 def test_view_task_list(page):
@@ -26,7 +25,6 @@ def test_view_task_list(page):
     page.click('[data-testid="add-task-button"]')
     page.wait_for_timeout(500)
     expect(page.locator('[data-testid="task-list"]')).to_contain_text("Review for exam")
-
 
 # User Story 3: As a student, I want to update or delete a task,
 # so that I can manage changes in my workload.
@@ -39,7 +37,6 @@ def test_update_and_delete_task(page):
     page.fill('[data-testid="task-title-input"]', "Clean notes")
     page.click('[data-testid="add-task-button"]')
     page.wait_for_timeout(500)
-
 
     page.click('.options-btn')
     page.wait_for_timeout(200)
