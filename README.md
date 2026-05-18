@@ -150,6 +150,11 @@ Planned tests:
 **GitHub Actions:**
 <img width="1207" height="857" alt="image" src="https://github.com/user-attachments/assets/29775644-b932-462a-956f-1601594b6b4e" />
 
+## Reflection 
+The hardest part was trying to write tests for something that didn't exist yet. We had to decide what class names and data-testid attributes to use before we even had an HTML file. It felt weird because normally, we just write the code first and figure out the details as you go. We also kept second guessing ourselves like so it was hard to know how specific to be without actually seeing the UI yet.  
+
+That said, writing tests first genuinely changed how we approached the project . Normally, we just start coding and figure out the structure as we go but with TDD we had to think about how everything was going to connect before writing anything. It made us more intentional with our decisions like what to name things and how the features should behave. We also caught problems earlier than we normally would have because the tests would immediately tell us when something wasn't working the way it was supposed to. Overall it made the whole process more organized even if it felt slower at the start. 
+
 
 
 
