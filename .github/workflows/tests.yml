@@ -20,8 +20,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install flask pytest
+          pip install flask pytest playwright pytest-playwright
+
+      - name: Install Playwright Browsers
+        run: |
+          playwright install --with-deps
 
       - name: Run tests
         run: |
+          python app.py &
+          sleep 3
           pytest
