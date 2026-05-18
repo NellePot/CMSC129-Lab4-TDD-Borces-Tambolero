@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, render_template
-from src.task import create_task
-import src.task as task_module
+from task import create_task
+import task as task_module
 
 app = Flask(__name__)
 
