@@ -140,6 +140,23 @@ Planned tests:
 **GitHub Actions:**
 <img width="1292" height="350" alt="image" src="https://github.com/user-attachments/assets/1badebef-a930-4d73-98f7-d7b6ee8907f6" />
 
+### System Testing with TDD
+
+**Local terminal output:**
+<img width="1787" height="918" alt="Screenshot 2026-05-18 093805" src="https://github.com/user-attachments/assets/4d585636-0387-4372-aa15-f3abbdc4562d" />
+<img width="1918" height="972" alt="Screenshot 2026-05-18 105024" src="https://github.com/user-attachments/assets/68809ff0-88a6-4710-ae10-941a9db79fef" />
+<img width="1918" height="1017" alt="Screenshot 2026-05-18 143701" src="https://github.com/user-attachments/assets/b75768b9-72fd-4c7c-ac52-7799bab9ee1a"/>
+
+**GitHub Actions:**
+<img width="1207" height="857" alt="image" src="https://github.com/user-attachments/assets/29775644-b932-462a-956f-1601594b6b4e" />
+
+
+
+
+
+
+
+
 
 
 
