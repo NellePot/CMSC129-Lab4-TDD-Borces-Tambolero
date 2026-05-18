@@ -30,7 +30,10 @@ jobs:
           sleep 3
         env:
           FLASK_ENV: development
+          PYTHONPATH: ${{ github.workspace }}/src
 
       - name: Run tests
         run: |
           pytest tests -v
+        env:
+          PYTHONPATH: ${{ github.workspace }}/src
